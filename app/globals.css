@@ -1,26 +1,394 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-md: 49rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --orange: #D87D4A;
+  --light-orange: #FBAF85;
+  --shadow: #101010;
+  --grey: #F1F1F1;
+  --light-grey: #FAFAFA;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+main {
+  background-color: #191919;
+  background-image: url(../public/assets/home/desktop/image-hero.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: calc(100vh - 59.22px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 36px  1.29px 40px*/
+h1 {
+  font-size: 56px;  
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  line-height: 56px;
+  text-transform: uppercase;
+}
+
+/* 28px 1px auto*/
+h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: 1.43px;
+  text-transform: uppercase;
+}
+
+/* 28px 2px auto*/
+h3 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 1.14px;
+  text-transform: uppercase;
+}
+
+/* 24px 0.86px */
+h4 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h5 {
+  font-size: 18px;
+  letter-spacing: 1.29px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-size: 14px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 15px;
+  line-height: 25px;
+}
+
+input {
+  border: 1px solid #CFCFCF;
+  border-radius: 8px;
+  outline: none;
+  padding: 9px 12px 9px 12px;
+  caret-color: var(--orange);
+  font-weight: 700;
+}
+
+input:hover, input:active {
+  border: 1px solid var(--orange);
+}
+
+input:required:invalid:focus {
+  border: 2px solid red;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, .4);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.25px;  
+}
+
+input[type="radio"] {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #CFCFCF;
+  accent-color: var(--orange);
+}
+
+label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.21px;
+}
+
+/* Hide number input arrows */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+
+.nav-link {
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 2px;
+}
+.nav-link:hover {
+  color: var(--orange);
+}
+
+.cart-h {
+  height: calc(100vh - 59.22px);
+  top: 59.22px;
+}
+
+button {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.circle {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--orange);
+  background-image: url(../public/assets/home/desktop/pattern-circles.svg);
+  background-position: -100% 10%;
+  background-repeat: no-repeat;
+  height: 560px;
+  border-radius: 8px;
+  padding-top: 112px;
+  padding-bottom: 112px;
+  padding-right: 105px;
+}
+
+.speaker-table {
+  background-image: url(../public/assets/home/desktop/image-speaker-zx7.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 320px;
+  border-radius: 8px;
+  margin-top: 48px;
+}
+
+
+
+/* DESIGN COMPONENTS */
+
+
+/* button design */
+.link-btn {
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-1 {
+  background-color: var(--orange);
+  border: 1px solid var(--orange);
+  color: white;
+  padding: .75rem 1.5rem .7rem 1.5rem;
+  max-width: 160px;
+}
+.btn-1:hover {
+  background-color: var(--light-orange);
+  border: 1px solid var(--light-orange);
+}
+
+.btn-2 {
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  padding: .7rem 1.5rem .7rem 1.5rem;
+  max-width: 160px;
+}
+.btn-2:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-3 {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: rgba(0, 0, 0, .5);
+  padding: .5rem 1rem .5rem 1rem;
+}
+.btn-3:hover {
+  color: var(--orange);
+}
+
+.btn-b {
+  background-color: black;
+  color: white;
+  padding: .9rem 1.5rem .9rem 1.5rem;
+  max-width: 160px;
+}
+.btn-b:hover {
+  background-color: #4C4C4C;
+}
+
+.orange-btn {
+  background-color: #D87D4A;
+}
+.orange-btn:hover {
+  background-color: #FBAF85;
+}
+
+
+/* CATEGORY */
+.headphones {
+  top: -75px;
+}
+.speakers {
+  top: -70px;
+}
+.earphones {
+  top: -65px;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--shadow);
+  position: relative;
+  min-height: 365px;
+  width: 100%;
+}
+
+.line {
+  height: 4px;
+  width: 101px;
+  background-color: var(--orange);
+  position: absolute;
+  top: 0;
+}
+
+svg {
+  fill: white;
+  cursor: pointer;
+}
+svg:hover {
+  fill: var(--orange);
+}
+
+/* Responsive Design */
+
+.padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.desktop {
+  display: block;
+}
+.tablet {
+  display: none;
+}
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 1080px) {
+  .padding {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .circle {
+    background-position: -1000% 10%;
   }
 }
+@media only screen and (max-width: 768px) {
+  .padding {
+    padding-left: 39px;
+    padding-right: 39px;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .desktop {
+    display: none;
+  }
+  .tablet {
+    display: block;
+  }
+
+  main {
+    background-image: url(../public/assets/home/tablet/image-header.jpg);
+  }
+
+  .center {
+    text-align: center;
+    align-items: center;
+  }
+
+  .circle {
+    padding: 64px 0 64px 0;
+    height: fit-content;
+    background-position: 50% 120%;
+  }
+
+  .speaker-table {
+    background-image: url(../public/assets/home/tablet/image-speaker-zx7.jpg);
+  }
+
+}
+@media only screen and (max-width: 640px) {
+
+  h1 {
+    font-size: 36px;
+    letter-spacing: 1.29px;
+    line-height: 40px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    letter-spacing: 1px;
+    line-height: normal;
+  }
+
+  h3 {
+    font-size: 28px;
+    letter-spacing: 2px;
+    line-height: normal;
+  }
+
+  h4 {
+    font-size: 24px;
+    letter-spacing: 0.86px;
+    line-height: normal;
+  }
+
+  .padding {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .tablet {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+
+  main {
+    background-image: url(../public/assets/home/mobile/image-header.jpg);
+  }
+
+  .circle {
+    background-position: 50% -130px ;
+    background-size: 170%;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .speaker-table {
+    background-image: url(../public/assets/home/mobile/image-speaker-zx7.jpg);
+  }
+
+  .line {
+    right: 38%;
+  }
 }

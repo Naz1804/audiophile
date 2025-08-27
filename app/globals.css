@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --breakpoint-md: 49rem;
+  --breakpoint-md: 57.1rem;
 }
 
 :root {
@@ -302,7 +302,7 @@ svg:hover {
     background-position: -1000% 10%;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 913px) {
   .padding {
     padding-left: 39px;
     padding-right: 39px;

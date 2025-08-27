@@ -1,23 +1,7 @@
-"use client";
-
 import Image from "next/image"
-import { useCart } from "./CartContext";
-import data from '@/lib/data.json';
 import Ordered from "./Ordered";
 
-const Summary = ({ popUp, setPopUp }) => {
-  const { cartItems } = useCart();
-
-  const fullCartItems = cartItems.map(cartItem => {
-  const product = data.find(p => p.id === cartItem.id);
-  if (!product) return null; // avoid breaking if not found
-
-  return {
-    ...product,
-    quantity: cartItem.quantity
-  };
-}).filter(Boolean); // removes any nulls
-
+const Summary = ({ popUp, setPopUp, fullCartItems }) => {
 
   // $$ Prices $$ 
   const total = fullCartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -83,7 +67,7 @@ const Summary = ({ popUp, setPopUp }) => {
         <h5 className="text-[#D87D4A]">${formattedPrice(grandTotal)}</h5>
       </div>
 
-      <Ordered popUp={popUp} setPopUp={setPopUp} />
+      <Ordered popUp={popUp} setPopUp={setPopUp} fullCartItems={fullCartItems} />
     </div>
   );
 };

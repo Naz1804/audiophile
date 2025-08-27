@@ -6,7 +6,7 @@ const Items = ({ fullcartItems, showAll, setshowAll }) => {
   const remainingItems = fullcartItems.slice(1);
 
   return (
-    <div className="bg-[#F1F1F1] rounded-t-lg sm:rounded-l-lg p-6 sm:w-[246px] flex flex-col justify-center">
+    <div className="bg-[#F1F1F1] rounded-t-lg sm:rounded-r-none sm:rounded-l-lg p-6 sm:w-[246px] flex flex-col justify-center">
       {firstItem && (
         <div className="flex items-start">
           <Image

@@ -4,27 +4,14 @@ import Image from "next/image";
 import Tick from "@/public/assets/checkout/icon-order-confirmation.svg";
 import Link from "next/link";
 import { useState } from "react";
-import data from "@/lib/data.json";
 import { useCart } from "./CartContext";
 import Items from "./Items";
 
-const Ordered = ({ popUp, setPopUp }) => {
+const Ordered = ({ popUp, setPopUp, fullCartItems }) => {
   
   const [showAll, setshowAll] = useState(false);
 
-  const { cartItems, clearCart } = useCart();
-
-  const fullCartItems = cartItems
-    .map((cartItem) => {
-      const product = data.find((p) => p.id === cartItem.id);
-      if (!product) return null; // avoid breaking if not found
-
-      return {
-        ...product,
-        quantity: cartItem.quantity,
-      };
-    })
-    .filter(Boolean); // removes any nulls
+  const { clearCart } = useCart();
 
   const total = fullCartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -47,7 +34,7 @@ const Ordered = ({ popUp, setPopUp }) => {
           <div className="bg-black/50 fixed top-0 left-0 right-0 bottom-0 z-10 pointer-events-auto padding"
           onClick={() => setPopUp(!popUp)}>
 
-            <div className="max-w-[375px] sm:w-[540px] bg-white p-8 sm:p-12 rounded-lg flex flex-col gap-8 justify-self-center mt-20"
+            <div className="max-w-[375px] sm:max-w-[540px] bg-white p-8 sm:p-12 rounded-lg flex flex-col gap-8 justify-self-center mt-20"
             onClick={(e) => e.stopPropagation()}>
               
               <Image src={Tick} alt="confrimation" width={64} height={64} />
@@ -63,7 +50,7 @@ const Ordered = ({ popUp, setPopUp }) => {
 
                 <Items fullcartItems={fullCartItems} showAll={showAll} setshowAll={setshowAll} />
                 
-                <div className={`bg-black rounded-b-lg sm:rounded-r-lg sm:w-[198px] flex flex-col justify-center py-4 pl-8 ${showAll ? "sm:pb-10" : ""}`}>
+                <div className={`bg-black rounded-b-lg sm:rounded-l-none sm:rounded-r-lg sm:w-[198px] flex flex-col justify-center py-4 pl-8 ${showAll ? "sm:pb-10" : ""}`}>
                   <p className={`text-white/50 ${showAll ? "mt-auto" : ""}`}>GRAND TOTAL</p>
                   <h5 className="text-white font-medium">${total.toLocaleString()}</h5>
                 </div>

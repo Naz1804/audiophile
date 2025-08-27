@@ -7,16 +7,37 @@ import Input from "@/components/Input"
 import PayMethod from "@/components/PayMethod"
 import Summary from "@/components/Summary"
 
+import data from "@/lib/data.json";
+import { useCart } from "@/components/CartContext";
+
 const page = () => {
   const [popUp, setPopUp] = useState(false);
+  const { cartItems } = useCart();
+
+  const fullCartItems = cartItems.map(cartItem => {
+  const product = data.find(p => p.id === cartItem.id);
+  if (!product) return null; // avoid breaking if not found
+
+  return {
+    ...product,
+    quantity: cartItem.quantity
+  };
+}).filter(Boolean);
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (event.currentTarget.checkValidity()) {
+    const formIsValid = event.currentTarget.checkValidity();
+    const cartHasItems = fullCartItems.length > 0;
+
+    if (formIsValid && cartHasItems) {
       setPopUp(true);
     } else {
       event.currentTarget.reportValidity();
+
+      if(!cartHasItems) {
+        alert("Your cart is empty.")
+      }
     }
   }
 
@@ -65,7 +86,7 @@ const page = () => {
           </form>
 
           {/* Summary */}
-          <Summary popUp={popUp} setPopUp={setPopUp} />
+          <Summary popUp={popUp} setPopUp={setPopUp} fullCartItems={fullCartItems} />
         </div>
       </div>
       

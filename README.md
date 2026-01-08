@@ -7,6 +7,7 @@ This project highlights scalable component structure, responsive design, and fro
 
 ## Why this project
 This project was built to demonstrate real-world frontend patterns commonly used in commercial eCommerce applications, including component-based architecture, state handling, and performance-aware UI development.
+
 It reflects the type of work expected in a frontend engineer role working with modern React frameworks.
 
 ## Key Features

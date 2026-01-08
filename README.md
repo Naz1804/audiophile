@@ -1,7 +1,7 @@
 # AudioPhile
 
 ## Overview
-A production-style eCommerce frontend built with Next.js demonstrating a hybrid architecture: product pages are statically generated for fast load times and SEO, while interactive components such as the shopping cart and filters run on the client.
+A production-style eCommerce frontend built with Next.js demonstrating a hybrid architecture product pages are statically generated for fast load times and SEO, while interactive components such as the shopping cart and filters run on the client.
 
 This project highlights scalable component structure, responsive design, and frontend engineering patterns used in real-world web applications.
 
